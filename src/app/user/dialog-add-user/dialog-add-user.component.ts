@@ -6,6 +6,8 @@ import { FormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
 import { MatDividerModule } from "@angular/material/divider";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { provideNativeDateAdapter } from "@angular/material/core";
 
 @Component({
 	selector: "app-dialog-add-user",
@@ -21,7 +23,9 @@ import { MatDividerModule } from "@angular/material/divider";
 		MatDialogClose,
 		MatIconModule,
 		MatDividerModule,
+		MatDatepickerModule,
 	],
+	providers: [provideNativeDateAdapter()],
 	templateUrl: "./dialog-add-user.component.html",
 	styleUrl: "./dialog-add-user.component.scss",
 })
