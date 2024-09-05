@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from "@angular/material/dialog";
+import { MatDialog, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatButtonModule } from "@angular/material/button";
 import { FormsModule } from "@angular/forms";
@@ -8,6 +8,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { provideNativeDateAdapter } from "@angular/material/core";
+import { DateAdapter } from "@angular/material/core";
+import { User } from "../../core/models/user.class";
 
 @Component({
 	selector: "app-dialog-add-user",
@@ -30,5 +32,12 @@ import { provideNativeDateAdapter } from "@angular/material/core";
 	styleUrl: "./dialog-add-user.component.scss",
 })
 export class DialogAddUserComponent {
-	constructor(public dialog: MatDialog) {}
+	user = new User();
+	constructor(public dialog: MatDialog, private dateAdapter: DateAdapter<any>) {
+		this.dateAdapter.setLocale("de-DE");
+	}
+
+	saveUser() {
+		console.log(this.user);
+	}
 }
