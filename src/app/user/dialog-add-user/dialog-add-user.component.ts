@@ -33,11 +33,13 @@ import { User } from "../../core/models/user.class";
 })
 export class DialogAddUserComponent {
 	user = new User();
+	birthDate!: Date;
 	constructor(public dialog: MatDialog, private dateAdapter: DateAdapter<any>) {
 		this.dateAdapter.setLocale("de-DE");
 	}
 
 	saveUser() {
+		this.user.birthDate = this.birthDate.getTime();
 		console.log(this.user);
 	}
 }
