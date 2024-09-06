@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { UsersService } from "./../core/services/firebase-services/users.service";
+import { Component, inject } from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatButtonModule } from "@angular/material/button";
@@ -15,6 +16,7 @@ import { DialogAddUserComponent } from "./dialog-add-user/dialog-add-user.compon
 })
 export class UserComponent {
 	//user = new User();
+	usersService = inject(UsersService);
 
 	constructor(public dialog: MatDialog) {}
 
