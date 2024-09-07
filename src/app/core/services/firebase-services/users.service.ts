@@ -21,7 +21,6 @@ export class UsersService {
 	}
 
 	async addUser(item: {}) {
-		debugger;
 		await addDoc(this.getAllUsersRef(), item)
 			.catch((err) => {
 				console.error(err);
