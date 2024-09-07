@@ -1,5 +1,5 @@
 import { Injectable, inject } from "@angular/core";
-import { Firestore, doc, collection, onSnapshot } from "@angular/fire/firestore";
+import { Firestore, doc, addDoc, collection, onSnapshot } from "@angular/fire/firestore";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -20,18 +20,25 @@ export class UsersService {
 		this.unsubUser();
 	}
 
+	async addUser(item: {}) {
+		debugger;
+		await addDoc(this.getAllUsersRef(), item)
+			.catch((err) => {
+				console.error(err);
+			})
+			.then((docRef) => {
+				console.log("Document written with ID:", docRef);
+			});
+	}
+
 	subUserList() {
 		return onSnapshot(this.getAllUsersRef(), (userList) => {
-			userList.forEach((user) => {
-				console.log(user.id);
-			});
+			userList.forEach((user) => {});
 		});
 	}
 
 	subUser() {
-		return onSnapshot(this.getSingleDocRef("users", "zZzHDSQCgJgql4NSFzvD"), (user) => {
-			console.log(user.id, user.data());
-		});
+		return onSnapshot(this.getSingleDocRef("users", "zZzHDSQCgJgql4NSFzvD"), (user) => {});
 	}
 
 	getAllUsersRef() {
