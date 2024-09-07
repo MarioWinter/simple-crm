@@ -1,6 +1,6 @@
 import { Component, inject } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { MatDialog, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from "@angular/material/dialog";
+import { MatDialog, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatDialogRef } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatButtonModule } from "@angular/material/button";
 import { FormsModule } from "@angular/forms";
@@ -41,7 +41,7 @@ export class DialogAddUserComponent {
 	birthDate!: Date;
 	loading: boolean = false;
 	usersService = inject(UsersService);
-	constructor(public dialog: MatDialog, private dateAdapter: DateAdapter<any>) {
+	constructor(public dialog: MatDialog, private dateAdapter: DateAdapter<any>, public dialogRef: MatDialogRef<DialogAddUserComponent>) {
 		this.dateAdapter.setLocale("de-DE");
 	}
 
@@ -50,8 +50,8 @@ export class DialogAddUserComponent {
 			this.loading = true;
 			this.user.birthDate = this.birthDate.getTime();
 			this.usersService.addUser(this.user.toJSON());
-		} else {
-			this.loading = false;
 		}
+		this.loading = false;
+		this.dialogRef.close();
 	}
 }
