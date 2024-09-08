@@ -11,7 +11,7 @@
 		</tr>
 		@for(user of usersService.allUsers;track user.id){
 
-		<tr>
+		<tr [routerLink]="['/user', user.id]">
 			<td>{{ user.firstName }} {{ user.lastName }}</td>
 			<td>Weiss Technik GmbH</td>
 			<td>mario.winterweiss-technik.com</td>

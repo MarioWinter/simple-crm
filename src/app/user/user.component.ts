@@ -1,4 +1,5 @@
 import { CommonModule } from "@angular/common";
+import { RouterModule } from "@angular/router";
 import { UsersService } from "./../core/services/firebase-services/users.service";
 import { Component, inject } from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
@@ -13,7 +14,7 @@ import { DialogAddUserComponent } from "./dialog-add-user/dialog-add-user.compon
 @Component({
 	selector: "app-user",
 	standalone: true,
-	imports: [MatButtonModule, MatIconModule, MatTooltipModule, MatDialogModule, MatCardModule, CommonModule],
+	imports: [MatButtonModule, MatIconModule, MatTooltipModule, MatDialogModule, MatCardModule, CommonModule, RouterModule],
 	templateUrl: "./user.component.html",
 	styleUrl: "./user.component.scss",
 })
