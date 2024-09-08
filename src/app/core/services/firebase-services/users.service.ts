@@ -1,5 +1,6 @@
 import { Injectable, inject } from "@angular/core";
-import { Firestore, doc, addDoc, collection, onSnapshot } from "@angular/fire/firestore";
+import { Firestore, doc, addDoc, collection, onSnapshot, updateDoc, DocumentData } from "@angular/fire/firestore";
+import { UserInterface } from "../../interfaces/user";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -7,6 +8,7 @@ import { Observable } from "rxjs";
 })
 export class UsersService {
 	firestore: Firestore = inject(Firestore);
+	allUsers: UserInterface[] = [];
 	unsubUserList;
 	unsubUser;
 
@@ -26,14 +28,35 @@ export class UsersService {
 				console.error(err);
 			})
 			.then((docRef) => {
-				console.log("Document written with ID:", docRef);
+				//console.log("Document written with ID:", docRef);
 			});
+	}
+
+	async updateUser(colId: string, docId: string, item: {}) {
+		await updateDoc(this.getSingleDocRef(colId, docId), item).catch((err) => {
+			console.error(err);
+		});
 	}
 
 	subUserList() {
 		return onSnapshot(this.getAllUsersRef(), (userList) => {
-			userList.forEach((user) => {});
+			this.allUsers = [];
+			userList.forEach((user) => {
+				this.allUsers.push(this.toJSON(user.data(), user.id));
+			});
 		});
+	}
+
+	toJSON(obj: any, id: string): UserInterface {
+		return {
+			id: id || "",
+			firstName: obj.firstName || "",
+			lastName: obj.lastName || "",
+			birthDate: obj.birthDate || "",
+			address: obj.address || "",
+			zipCode: obj.zipCode || "",
+			city: obj.city || "",
+		};
 	}
 
 	subUser() {

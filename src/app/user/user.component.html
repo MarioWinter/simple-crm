@@ -1,7 +1,7 @@
+@if(usersService.allUsers.length >0){
 <mat-card appearance="outlined">
 	<table class="user-table">
 		<tr>
-			<th>Photo</th>
 			<th>User Name</th>
 			<th>Company</th>
 			<th>E-Mail</th>
@@ -9,10 +9,10 @@
 			<th>Operation</th>
 			<th>Action</th>
 		</tr>
+		@for(user of usersService.allUsers;track user.id){
 
 		<tr>
-			<td><img src="assets/profile-photo.png" alt="User Photo" /></td>
-			<td>Mario Winter</td>
+			<td>{{ user.firstName }} {{ user.lastName }}</td>
 			<td>Weiss Technik GmbH</td>
 			<td>mario.winterweiss-technik.com</td>
 			<td><span class="status active">Active</span></td>
@@ -21,20 +21,12 @@
 				<button class="login-button">Login</button>
 			</td>
 		</tr>
-		<tr>
-			<td><img src="assets/profile-photo.png" alt="User Photo" /></td>
-			<td>Mario Winter</td>
-			<td>Weiss Technik GmbH</td>
-			<td>mario.winterweiss-technik.com</td>
-			<td><span class="status active">Active</span></td>
-			<td class="operation">Test Icon</td>
-			<td>
-				<button class="login-button">Login</button>
-			</td>
-		</tr>
+		}
 	</table>
 </mat-card>
-
+}@else {
+<H3>No User added</H3>
+}
 <button (click)="openDialog()" class="add-user-btn" mat-fab color="primary" matTooltip="Add user" [matTooltipPosition]="'above'">
 	<mat-icon>add</mat-icon>
 </button>
