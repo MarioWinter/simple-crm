@@ -3,32 +3,32 @@
 }
 
 .sidenav {
-	width: 300px;
+	width: 30rem;
 }
 
 .logo-container {
-	padding: 0px 16px;
-	border-bottom: 1px solid rgba($color: #000000, $alpha: 0.04);
-	min-height: 56px;
+	padding: 0 1.6rem;
+	border-bottom: 0.1rem solid rgba($color: #000000, $alpha: 0.04);
+	min-height: 5.6rem;
 	display: flex;
 	align-items: center;
 }
 
 mat-toolbar {
-	min-height: 56px;
-	height: 56px;
+	min-height: 5.6rem;
+	height: 5.6rem;
 }
 
 ul {
 	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
+	padding: 0;
+	margin: 0;
 	li {
-		padding: 0px 16px;
-		height: 48px;
+		padding: 0 1.6rem;
+		height: 4.8rem;
 		display: flex;
 		align-items: center;
-		gap: 15px;
+		gap: 1.5rem;
 		cursor: pointer;
 		&:hover {
 			background-color: rgba($color: #000000, $alpha: 0.04);
@@ -37,8 +37,9 @@ ul {
 }
 
 .router-container {
-	padding-left: 56px;
-	padding-top: 16px;
+	padding-left: 5.6rem;
+	padding-right: 5.6rem;
+	padding-top: 1.6rem;
 }
 
 a {
@@ -56,7 +57,7 @@ a {
 
 	&:focus {
 		outline: none;
-		box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.04);
+		box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.04);
 		color: black;
 	}
 }

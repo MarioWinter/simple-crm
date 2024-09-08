@@ -3,14 +3,16 @@ import { Component, inject } from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
 import { MatDialogModule, MatDialog } from "@angular/material/dialog";
 import { DialogAddUserComponent } from "./dialog-add-user/dialog-add-user.component";
+
 //import { User } from "../core/models/user.class";
 
 @Component({
 	selector: "app-user",
 	standalone: true,
-	imports: [MatButtonModule, MatIconModule, MatTooltipModule, MatDialogModule],
+	imports: [MatButtonModule, MatIconModule, MatTooltipModule, MatDialogModule, MatCardModule],
 	templateUrl: "./user.component.html",
 	styleUrl: "./user.component.scss",
 })
