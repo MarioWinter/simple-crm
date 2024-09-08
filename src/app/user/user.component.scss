@@ -4,3 +4,82 @@
 	bottom: 5.6rem;
 	cursor: pointer;
 }
+
+.user-table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+
+	th {
+		padding: 1.2rem 1.5rem;
+		font-weight: bold;
+		color: #6c757d;
+		border-bottom: 0.1rem solid #e0e0e0;
+	}
+
+	td {
+		padding: 1.2rem 1.5rem;
+		vertical-align: middle;
+		border-bottom: 0.1rem solid #e0e0e0;
+		color: #343a40;
+	}
+
+	td:first-child img {
+		width: 4rem;
+		height: 4rem;
+		border-radius: 50%;
+		object-fit: cover;
+		margin-right: 1rem;
+	}
+
+	.status {
+		display: inline-block;
+		padding: 0.4rem 1rem;
+		border-radius: 1.2rem;
+		font-size: 0.85em;
+		font-weight: bold;
+
+		&.active {
+			background-color: #d4edda;
+			color: #155724;
+		}
+
+		&.inactive {
+			background-color: #f8d7da;
+			color: #721c24;
+		}
+	}
+
+	.operation {
+		svg {
+			color: #7c4dff;
+			margin: 0 0.5rem;
+			cursor: pointer;
+
+			&:hover {
+				color: #651fff;
+			}
+		}
+	}
+
+	.login-button {
+		background-color: #5a67d8;
+		color: white;
+		border: none;
+		border-radius: 0.4rem;
+		padding: 0.5rem 1.5rem;
+		cursor: pointer;
+		font-size: 0.85em;
+
+		&:hover {
+			background-color: #4c51bf;
+		}
+	}
+}
+
+mat-card {
+	padding: 2rem;
+	box-shadow: none;
+	border: 0.1rem solid #e0e0e0;
+	border-radius: 0.8rem;
+}
