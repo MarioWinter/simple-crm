@@ -41,6 +41,7 @@ export class DialogAddUserComponent {
 	birthDate!: Date;
 	loading: boolean = false;
 	usersService = inject(UsersService);
+
 	constructor(public dialog: MatDialog, private dateAdapter: DateAdapter<any>, public dialogRef: MatDialogRef<DialogAddUserComponent>) {
 		this.dateAdapter.setLocale("de-DE");
 	}
