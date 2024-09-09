@@ -1,7 +1,16 @@
 <mat-card class="user-detail-header" appearance="outlined">
 	<img class="user-img" src="../../../assets/img/user-img.svg" alt="" />
 	<div class="user-details">
-		<h2>Max Mustermann</h2>
-		emialding.de
+		<h2>{{ usersService.user.firstName }} {{ usersService.user.lastName }}</h2>
+		<div>{{ usersService.user.email }}</div>
 	</div>
+</mat-card>
+<mat-card class="mt-25">
+	<mat-card-header>
+		<mat-card-title>Address</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		{{ usersService.user.address }} <br />
+		{{ usersService.user.zipCode }} {{ usersService.user.city }}
+	</mat-card-content>
 </mat-card>

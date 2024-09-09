@@ -9,6 +9,8 @@ import { Observable } from "rxjs";
 export class UsersService {
 	firestore: Firestore = inject(Firestore);
 	allUsers: UserInterface[] = [];
+	userId = "";
+	user: any = {};
 	unsubUserList;
 	unsubUser;
 
@@ -61,7 +63,14 @@ export class UsersService {
 	}
 
 	subUser() {
-		return onSnapshot(this.getSingleDocRef("users", "zZzHDSQCgJgql4NSFzvD"), (user) => {});
+		if (this.userId === "") {
+			return () => {};
+		} else {
+			return onSnapshot(this.getSingleDocRef("users", this.userId), (user) => {
+				this.user = this.toJSON(user.data(), user.id);
+				console.log(this.user);
+			});
+		}
 	}
 
 	getAllUsersRef() {
