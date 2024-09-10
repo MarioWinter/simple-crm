@@ -1,6 +1,6 @@
 import { Injectable, inject } from "@angular/core";
 import { Firestore, doc, addDoc, collection, onSnapshot, updateDoc, DocumentData } from "@angular/fire/firestore";
-import { UserInterface } from "../../interfaces/user";
+import { User } from "../../models/user.class";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -8,9 +8,9 @@ import { Observable } from "rxjs";
 })
 export class UsersService {
 	firestore: Firestore = inject(Firestore);
-	allUsers: UserInterface[] = [];
+	allUsers: User[] = [];
 	userId = "";
-	user: any = {};
+	user: User = new User();
 	unsubUserList;
 	unsubUser;
 
@@ -44,22 +44,10 @@ export class UsersService {
 		return onSnapshot(this.getAllUsersRef(), (userList) => {
 			this.allUsers = [];
 			userList.forEach((user) => {
-				this.allUsers.push(this.toJSON(user.data(), user.id));
+				this.user = new User(user.data(), this.userId);
+				this.allUsers.push(this.user);
 			});
 		});
-	}
-
-	toJSON(obj: any, id: string): UserInterface {
-		return {
-			id: id || "",
-			firstName: obj.firstName || "",
-			lastName: obj.lastName || "",
-			email: obj.email || "",
-			birthDate: obj.birthDate || "",
-			address: obj.address || "",
-			zipCode: obj.zipCode || "",
-			city: obj.city || "",
-		};
 	}
 
 	subUser() {
@@ -67,7 +55,7 @@ export class UsersService {
 			return () => {};
 		} else {
 			return onSnapshot(this.getSingleDocRef("users", this.userId), (user) => {
-				this.user = this.toJSON(user.data(), user.id);
+				this.user = new User(user.data(), this.userId);
 				console.log(this.user);
 			});
 		}
