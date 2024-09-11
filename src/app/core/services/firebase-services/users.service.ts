@@ -56,7 +56,6 @@ export class UsersService {
 		} else {
 			return onSnapshot(this.getSingleDocRef("users", this.userId), (user) => {
 				this.user = new User(user.data(), this.userId);
-				console.log(this.user);
 			});
 		}
 	}

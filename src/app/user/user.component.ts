@@ -9,8 +9,6 @@ import { MatCardModule } from "@angular/material/card";
 import { MatDialogModule, MatDialog } from "@angular/material/dialog";
 import { DialogAddUserComponent } from "./dialog-add-user/dialog-add-user.component";
 
-//import { User } from "../core/models/user.class";
-
 @Component({
 	selector: "app-user",
 	standalone: true,
