@@ -44,7 +44,7 @@ export class UsersService {
 		return onSnapshot(this.getAllUsersRef(), (userList) => {
 			this.allUsers = [];
 			userList.forEach((user) => {
-				this.user = new User(user.data(), this.userId);
+				this.user = new User(user.data(), user.id);
 				this.allUsers.push(this.user);
 			});
 		});
@@ -55,7 +55,7 @@ export class UsersService {
 			return () => {};
 		} else {
 			return onSnapshot(this.getSingleDocRef("users", this.userId), (user) => {
-				this.user = new User(user.data(), this.userId);
+				this.user = new User(user.data(), user.id);
 			});
 		}
 	}

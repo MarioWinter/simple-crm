@@ -13,8 +13,8 @@
 
 		<tr [routerLink]="['/user', user.id]">
 			<td>{{ user.firstName }} {{ user.lastName }}</td>
-			<td>Weiss Technik GmbH</td>
-			<td>mario.winterweiss-technik.com</td>
+			<td>{{ user.id }}</td>
+			<td>{{ user.email }}</td>
 			<td><span class="status active">Active</span></td>
 			<td class="operation">Test Icon</td>
 			<td>

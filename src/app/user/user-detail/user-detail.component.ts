@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ActivatedRoute } from "@angular/router";
 import { DialogEditUserComponent } from "../dialog-edit-user/dialog-edit-user.component";
@@ -19,13 +19,14 @@ import { User } from "../../core/models/user.class";
 	templateUrl: "./user-detail.component.html",
 	styleUrl: "./user-detail.component.scss",
 })
-export class UserDetailComponent {
+export class UserDetailComponent implements OnInit {
 	userId: string = "";
-	user: User | null = null;
+	user: User = new User();
 	usersService = inject(UsersService);
+
 	constructor(private route: ActivatedRoute, public dialog: MatDialog) {}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.route.paramMap.subscribe((params) => {
 			this.usersService.userId = params.get("id")!;
 			this.usersService.subUser();
