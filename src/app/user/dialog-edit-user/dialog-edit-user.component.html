@@ -3,33 +3,33 @@
 	<div>
 		<mat-form-field class="mr-16" appearance="fill">
 			<mat-label>First Name</mat-label>
-			<input [disabled]="loading" [(ngModel)]="usersService.user.firstName" matInput />
+			<input [disabled]="loading" [(ngModel)]="user.firstName" matInput />
 		</mat-form-field>
 		<mat-form-field appearance="fill">
 			<mat-label>Last Name</mat-label>
-			<input [disabled]="loading" [(ngModel)]="usersService.user.lastName" matInput />
+			<input [disabled]="loading" [(ngModel)]="user.lastName" matInput />
 		</mat-form-field>
 	</div>
 	<div>
 		<mat-form-field appearance="fill" class="full-width">
 			<mat-label>E-Mail</mat-label>
-			<input [disabled]="loading" [(ngModel)]="usersService.user.email" matInput />
+			<input [disabled]="loading" [(ngModel)]="user.email" matInput />
 		</mat-form-field>
 	</div>
 	<div>
 		<mat-form-field appearance="fill" class="full-width">
 			<mat-label>Street + House No.</mat-label>
-			<input [disabled]="loading" matInput [(ngModel)]="usersService.user.street" />
+			<input [disabled]="loading" matInput [(ngModel)]="user.street" />
 		</mat-form-field>
 	</div>
 	<div>
 		<mat-form-field appearance="fill" class="mr-16">
 			<mat-label>Zip code</mat-label>
-			<input [disabled]="loading" matInput [(ngModel)]="usersService.user.zipCode" />
+			<input [disabled]="loading" matInput [(ngModel)]="user.zipCode" />
 		</mat-form-field>
 		<mat-form-field appearance="fill">
 			<mat-label>City</mat-label>
-			<input [disabled]="loading" matInput [(ngModel)]="usersService.user.city" />
+			<input [disabled]="loading" matInput [(ngModel)]="user.city" />
 		</mat-form-field>
 	</div>
 </mat-dialog-content>

@@ -11,6 +11,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 
 import { UsersService } from "../../core/services/firebase-services/users.service";
+import { User } from "../../core/models/user.class";
 
 @Component({
 	selector: "app-dialog-edit-user",
@@ -34,7 +35,7 @@ import { UsersService } from "../../core/services/firebase-services/users.servic
 })
 export class DialogEditUserComponent {
 	loading: boolean = false;
-
+	user!: User;
 	usersService = inject(UsersService);
 	constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<DialogEditUserComponent>) {}
 
