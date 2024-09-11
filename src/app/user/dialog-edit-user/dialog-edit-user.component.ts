@@ -9,6 +9,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
 
 import { UsersService } from "../../core/services/firebase-services/users.service";
 import { User } from "../../core/models/user.class";
@@ -28,6 +29,7 @@ import { User } from "../../core/models/user.class";
 		MatIconModule,
 		MatDividerModule,
 		MatDatepickerModule,
+		MatProgressBarModule,
 		CommonModule,
 	],
 	templateUrl: "./dialog-edit-user.component.html",
@@ -39,7 +41,12 @@ export class DialogEditUserComponent {
 	usersService = inject(UsersService);
 	constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<DialogEditUserComponent>) {}
 
-	saveUser() {}
+	saveUser() {
+		this.loading = true;
+		this.usersService.updateUser("users", this.user.id, this.user.toJSON());
+		this.dialogRef.close();
+		this.loading = false;
+	}
 
 	cancel() {
 		this.dialogRef.close();
